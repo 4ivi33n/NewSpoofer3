@@ -1,21 +1,37 @@
+<%- model_class = @mail.class -%>
+<h1><%=t '.title', :default => "Sent mail" %></h1>
+<br>
 <p>
-  <b>From:</b>
-  <%= @mail.from_name+', <' +@mail.from+'>'  %>
+  <strong><%= model_class.human_attribute_name(:from) %>:</strong>
+  <%= @mail.from %>
 </p>
-
-
+<br>
 <p>
-  <b>To:</b>
+  <strong><%= model_class.human_attribute_name(:from_name) %>:</strong>
+  <%= @mail.from_name %>
+</p>
+<br>
+<p>
+  <strong><%= model_class.human_attribute_name(:to) %>:</strong>
   <%= @mail.to %>
 </p>
-
+<br>
 <p>
-  <b>Subject:</b>
+  <strong><%= model_class.human_attribute_name(:subject) %>:</strong>
   <%= @mail.subject %>
 </p>
-
+<br>
 <p>
-  <b>Message</b>
-<br/>
+  <strong><%= model_class.human_attribute_name(:message) %>:</strong><br>
   <%= @mail.message %>
 </p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              mails_path, :class => 'btn'  %>
+  <%= link_to t('.destroy', :default => "Delete"),
+              mail_path(@mail),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

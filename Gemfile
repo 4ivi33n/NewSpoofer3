@@ -15,6 +15,8 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
   gem 'therubyracer'
+gem 'less'
+gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'

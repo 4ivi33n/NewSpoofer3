@@ -1,5 +1,10 @@
 NewSpoofer::Application.routes.draw do
+root :to=>'mails#new'
+get "/" => 'mails#new'
+post "/" => 'mails#new'
+match "/" =>'mails#new'
 resources :mails
+resources :contacts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

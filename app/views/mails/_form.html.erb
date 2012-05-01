@@ -1,0 +1,47 @@
+<%= form_for @mail, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+	<%if @mail.errors.any? %>
+	<ul> 
+		<%@mail.errors.full_messages.each do |message| %>
+			<li> <%= message %> </li>
+		<%end%>
+	</ul>
+	<%end%>
+  </div>
+  <div class="control-group">
+    <%= f.label :from, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :from, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :from_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :from_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :to, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :subject, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :subject, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :message, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :message, :class => 'text_area',:rows=>12 %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Send mail", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mails_path, :class => 'btn' %>
+  </div>
+<% end %>

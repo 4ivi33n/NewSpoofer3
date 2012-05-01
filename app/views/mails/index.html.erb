@@ -1,29 +1,40 @@
-<h1> Sent mail </h1>
-<table cellpadding="10"> 
-<tr>
-<th> From Name </th>
-<th> From </th>
-<th> To </th>
-<th> Subject </th>
-<th> Message </th>
-<th> </th>
-<th> </th>
-<th> </th>
-</tr>
-
-<% @mails.each do |mail| %>
-<tr> 
-	<td> <%=mail.from_name%> </td>
-	<td> <%=mail.from%> </td>
-	<td> <%=mail.to%> </td>
-	<td> <%=mail.subject%> </td>
-	<td> <%=mail.message%> </td>
-	<td> <%= link_to "view", mail_path(mail.id) %>
-	<td> <%= link_to "delete", mail, :confirm=>"Are you sure?",:method=>:delete %>
-</tr>
-
-<%end%>
+<%- model_class = Mail.new.class -%>
+<h1><%=t '.title', :default => "Sent mails" %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= "View mail"%></th>
+      <th><%= model_class.human_attribute_name(:from) %></th>
+      <th><%= model_class.human_attribute_name(:from_name) %></th>
+      <th><%= model_class.human_attribute_name(:to) %></th>
+      <th><%= model_class.human_attribute_name(:subject) %></th>
+      <th><%= model_class.human_attribute_name(:message) %></th>
+      <th><%= "Sent at"%></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mails.each do |mail| %>
+      <tr>
+        <td><%= link_to mail.id, mail_path(mail) %></td>
+        <td><%= mail.from %></td>
+        <td><%= mail.from_name %></td>
+        <td><%= mail.to %></td>
+        <td><%= mail.subject %></td>
+        <td><%= mail.message[0,[mail.message.length,50].min] %></td>
+        <td><%=l mail.created_at %></td>
+        <td>
+          <%= link_to t('.destroy', :default => "Delete"),
+                      mail_path(mail),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-<p> <%= link_to "Compose mail", new_mail_path%></p>
 
-
+<%= link_to t('.new', :default => "Compose mail"),
+            new_mail_path,
+            :class => 'btn btn-primary' %>

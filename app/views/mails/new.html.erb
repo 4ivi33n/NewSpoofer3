@@ -1,38 +1,4 @@
-<%= form_for @mail do |f|%> 
-	<%if @mail.errors.any? %>
-	<ul> 
-		<%@mail.errors.full_messages.each do |message| %>
-			<li> <%= message %> </li>
-		<%end%>
-	</ul>
-	<%end%>
-<table>
-<th> </th>
-<th> </th>
-<tr> 
-   <td> From: </td>
-   <td> <%=f.text_field :from%> </td>
-</tr>
-<td> From Name: </td>
-   <td> <%=f.text_field :from_name%></td>
-</tr>
-<tr>
-<td> To: </td>
-   <td> <%=f.text_field :to%> </td>
-</tr>
-<tr>
-<td> Subject: </td>
-   <td> <%=f.text_field :subject%> </td>
-</tr>
-
-<tr>
-<tr>
-<td>Message:</td>
-<td><%=f.text_area :message%></textarea></td>
-</tr>
-<tr>
-<td> </td>
-<td> <%= f.submit "Send mail"%></td>
-</tr>
-</table>
-<%end%>
+<%- model_class = @mail.class -%>
+<h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                               :default => "New #{model_class.model_name.human}") %></h1>
+<%= render :partial => 'form' %>
