@@ -1,0 +1,21 @@
+<p>
+  <b>From:</b>
+  <%= @mail.from_name+', <' +@mail.from+'>'  %>
+</p>
+
+
+<p>
+  <b>To:</b>
+  <%= @mail.to %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @mail.subject %>
+</p>
+
+<p>
+  <b>Message</b>
+<br/>
+  <%= @mail.message %>
+</p>

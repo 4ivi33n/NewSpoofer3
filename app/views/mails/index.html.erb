@@ -1,0 +1,29 @@
+<h1> Sent mail </h1>
+<table cellpadding="10"> 
+<tr>
+<th> From Name </th>
+<th> From </th>
+<th> To </th>
+<th> Subject </th>
+<th> Message </th>
+<th> </th>
+<th> </th>
+<th> </th>
+</tr>
+
+<% @mails.each do |mail| %>
+<tr> 
+	<td> <%=mail.from_name%> </td>
+	<td> <%=mail.from%> </td>
+	<td> <%=mail.to%> </td>
+	<td> <%=mail.subject%> </td>
+	<td> <%=mail.message%> </td>
+	<td> <%= link_to "view", mail_path(mail.id) %>
+	<td> <%= link_to "delete", mail, :confirm=>"Are you sure?",:method=>:delete %>
+</tr>
+
+<%end%>
+</table>
+<p> <%= link_to "Compose mail", new_mail_path%></p>
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NewSpoofer</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% flash.each do |key,value| %>
+<p> <%=value%> </p>
+<%end%>
+
+<%= yield %>
+
+</body>
+</html>
