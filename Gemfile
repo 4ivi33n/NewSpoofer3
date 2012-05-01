@@ -8,6 +8,8 @@ gem 'rails', '3.1.0'
 gem 'pg'
 
 
+gem 'less'
+gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -15,8 +17,6 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
   gem 'therubyracer'
-gem 'less'
-gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
